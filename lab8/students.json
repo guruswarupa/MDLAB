@@ -1,0 +1,7 @@
+[
+{"name": "Arun", "age": 20, "department": "CSE", "marks": 85, "skills": ["Python", "SQL",
+"Java"]},
+{"name": "Bala", "age": 21, "department": "ISE", "marks": 90, "skills": ["Python", "Machine Learning"]},
+{"name": "Charan", "age": 22, "department": "CSE", "marks": 78, "skills": ["C++", "DBMS"]},
+{"name": "Divya", "age": 20, "department": "ECE", "marks": 88, "skills": ["Python", "IoT"]}
+]
