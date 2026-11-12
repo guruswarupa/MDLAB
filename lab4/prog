@@ -1,0 +1,37 @@
+CREATE
+(alice:Person {
+name: 'Alice'
+}),
+(bob:Person {
+name: 'Bob'
+}),
+(laptop:Product {
+name: 'Laptop',
+category: 'Electronics',
+price: 50000
+}),
+(mouse:Product {
+name: 'Mouse',
+category: 'Electronics',
+price: 1000
+}),
+(alice)-[:FRIEND_OF]->(bob),
+(alice)-[:PURCHASED]->(laptop),
+(bob)-[:PURCHASED]->(mouse),
+(mouse)-[:SIMILAR_TO]->(laptop);
+
+MATCH (a:Person {name: 'Alice'})-[:PURCHASED]->(p:Product)
+RETURN p.name AS Product;
+
+MATCH (b:Person {name: 'Bob'})-[:PURCHASED]->(p:Product)
+MATCH (p)-[:SIMILAR_TO]->(similar:Product)
+RETURN similar.name AS SimilarProduct;
+
+MATCH (person:Person)-[:PURCHASED]->(product:Product)
+RETURN person.name AS Person,
+SUM(product.price) AS TotalSpending;
+
+MATCH (user:Person {name: 'Bob'})-[:PURCHASED]->(p:Product)
+MATCH (p)-[:SIMILAR_TO]->(recommended:Product)
+WHERE NOT (user)-[:PURCHASED]->(recommended)
+RETURN recommended.name AS RecommendedProduct;

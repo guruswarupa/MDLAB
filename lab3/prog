@@ -1,0 +1,20 @@
+CREATE
+(s:Sally),
+(j:John),
+(g:Graphs),
+(n:Neo4j);
+
+MATCH (s:Sally), (j:John), (g:Graphs), (n:Neo4j)
+CREATE
+(s)-[:IS_FRIENDS_WITH]->(j),
+(s)-[:LIKES]->(g),
+(s)-[:WORKS_FOR]->(n);
+
+MATCH (a)-[r]->(b)
+RETURN a, r, b;
+
+MATCH (s:Sally)-[:IS_FRIENDS_WITH]->(f)
+RETURN f;
+
+MATCH (s:Sally)-[:LIKES]->(x)
+RETURN x;
